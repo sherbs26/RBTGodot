@@ -1,11 +1,25 @@
 extends KinematicBody
 
-var direction = Vector3.FORWARD
+# How fast the player moves in meters per second.
+export var speed = 14
+# The downward acceleration when in the air, in meters per second squared.
+export var fall_acceleration = 0
+
+var velocity = Vector3.ZERO
 
 func _physics_process(delta):
+	var direction = Vector3.ZERO
 
-	direction = Vector3(Input.get_action_strength("move_forward") - Input.get_action_strength("move_back"),
-	0,
-	Input.get_action_strength("strafe_left") - Input.get_action_strength("strafe_right"))
-	
-	move_and_slide(direction, Vector3.UP)
+	if Input.is_action_pressed("strafe_right"):
+		direction.x += 1
+	if Input.is_action_pressed("strafe_left"):
+		direction.x -= 1
+	if Input.is_action_pressed("move_back"):
+		direction.z += 1
+	if Input.is_action_pressed("move_forward"):
+		direction.z -= 1
+
+	velocity.x = direction.x * speed
+	velocity.z = direction.z * speed
+	velocity.y -= fall_acceleration * delta
+	velocity = move_and_slide(velocity, Vector3.UP)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://wallCubeLib2.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://LevelGen.gd" type="Script" id=2]
+[ext_resource path="res://Debug Character.tscn" type="PackedScene" id=3]
+
+[node name="LevelGen" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray(  )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.636, 5, 43.406 )

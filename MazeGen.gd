@@ -40,20 +40,5 @@ func make_maze():
 	unvisited.erase(current)
 	
 	#execute recursive backtracker algorithm
-	while unvisited:
-		var neighbours = check_neighbours(current, unvisited)
-		if neighbours.size() > 0:
-			var next = neighbours[randi() % neighbours.size()]
-			stack.append(current)
-		#remove walls from *both* cells
-			var dir = next - current
-			var current_walls = Map.get_cell_item(current.x, current.y, current.z) - cell_walls[dir]
-			var next_walls = Map.get_cell_item(next.x, next.y, next.z) - cell_walls[-dir]
-			Map.set_cell_item(current.x, current.y, current.z, current_walls)
-			print(current_walls)
-			Map.set_cell_item(next.x, next.y, next.z, next_walls)
-			current = next
-			unvisited.erase(current)
-		elif stack:
-			current = stack.pop_back()
-		yield(get_tree(), "idle_frame")
+	
+	
