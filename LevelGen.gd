@@ -1,7 +1,7 @@
 extends Spatial
 
-var mazeH = 20
-var mazeW = 20
+var mazeH = 10
+var mazeW = 10
 var pathWidth = 7
 var stack = [[]]
 var maze = []
@@ -21,8 +21,19 @@ func _ready():
 
 func make_maze():
 	Map.clear()
-	for i in range(mazeW*mazeH):
+	for _i in range(mazeW*mazeH):
 		maze.append(0)
+	
+	for _k in range(mazeH*(pathWidth+1)):
+		Map.set_cell_item(-1, 0, _k, 2)
+		for _j in range(mazeW*(pathWidth+1)):
+			Map.set_cell_item(_j, 0, -1, 2)
+	
+	for _x in range(mazeW*(pathWidth+1)):
+		for _y in range(mazeH*(pathWidth+1)):
+			Map.set_cell_item(_x, 0, _y, 2)
+		
+	
 	var xCoord = randi() % mazeW
 	var yCoord = randi() % mazeH
 	stack.push_back(Vector2(xCoord,yCoord))
