@@ -1,31 +1,44 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[sub_resource type="CubeMesh" id=1]
-size = Vector3( 1, 1, 1 )
+[ext_resource path="res://Import/obj/wall2.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Import/obj/cube.obj" type="ArrayMesh" id=2]
 
-[sub_resource type="ConcavePolygonShape" id=2]
-data = PoolVector3Array( -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5 )
+[sub_resource type="ConcavePolygonShape" id=6]
+data = PoolVector3Array( -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 0, 0, 0, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0, 0, 0, -0.5, 0, 0.5, 0.5, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, -0.5, 0, -0.5, 0, 0, 0 )
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0, 0, 1, 1 )
+[sub_resource type="ConcavePolygonShape" id=7]
+data = PoolVector3Array( -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 0, 0, 0, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0, 0, 0, -0.5, 0, 0.5, 0.5, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, -0.5, 0, -0.5, 0, 0, 0 )
+
+[sub_resource type="ConcavePolygonShape" id=5]
+data = PoolVector3Array( -0.5, 6, -0.5, 0.5, 6, -0.5, -0.5, 6, 0.5, -0.5, 6, 0.5, 0.5, 6, -0.5, 0.5, 6, 0.5, 0.5, 6, 0.5, 0.5, 0, 0.5, -0.5, 6, 0.5, -0.5, 6, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 6, 0.5, -0.5, 0, 0.5, -0.5, 6, -0.5, -0.5, 6, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 0, 0, 0, 0.5, 6, -0.5, 0.5, 0, -0.5, 0.5, 6, 0.5, 0.5, 6, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 6, -0.5, -0.5, 0, -0.5, 0.5, 6, -0.5, 0.5, 6, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0, 0, 0, -0.5, 0, 0.5, 0.5, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, -0.5, 0, -0.5, 0, 0, 0 )
 
 [node name="Spatial" type="Spatial"]
 
 [node name="0" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58232, 0, 0 )
-mesh = SubResource( 1 )
+mesh = ExtResource( 2 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="0/StaticBody"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="1" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
-material/0 = SubResource( 3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="1"]
 
 [node name="CollisionShape" type="CollisionShape" parent="1/StaticBody"]
-shape = SubResource( 2 )
+shape = SubResource( 7 )
+
+[node name="2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="2/StaticBody"]
+shape = SubResource( 5 )
