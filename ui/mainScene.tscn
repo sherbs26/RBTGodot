@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/menu_button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Import/mnuBackground.jpg" type="Texture" id=2]
+[ext_resource path="res://fonts/arial.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="mainScene" type="Node2D"]
+position = Vector2( 512, 300 )
+
+[node name="mnuBackground" type="Sprite" parent="."]
+position = Vector2( -608, -316 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="mnuExit" parent="mnuBackground" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 466.0
+margin_right = 716.0
+margin_bottom = 538.0
+text = "Exit"
+
+[node name="mnuOptions" parent="mnuBackground" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 370.0
+margin_right = 716.0
+margin_bottom = 442.0
+text = "Options"
+
+[node name="mnuNewGame" parent="mnuBackground" instance=ExtResource( 1 )]
+margin_left = 500.0
+margin_top = 273.0
+margin_right = 716.0
+margin_bottom = 345.0
+text = "New Game"
+reference_path = "res://LevelGen.tscn"
+start_focused = true
+
+[node name="title" type="Label" parent="mnuBackground"]
+margin_left = 370.085
+margin_top = 75.4162
+margin_right = 838.085
+margin_bottom = 157.416
+custom_fonts/font = SubResource( 1 )
+text = "Maze of Minos"
+__meta__ = {
+"_edit_use_anchors_": false
+}

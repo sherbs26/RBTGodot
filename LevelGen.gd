@@ -1,11 +1,11 @@
 extends Spatial
 
-var mazeH = 10
-var mazeW = 10
+var mazeH = 4 + PlayerVariables.currentLevel
+var mazeW = 4 + PlayerVariables.currentLevel
 var pathWidth = 7
 var stack = [[]]
 var maze = []
-
+#define bit flags for cell paths
 const CELL_PATH_N = 1 << 1
 const CELL_PATH_E = 1 << 2
 const CELL_PATH_S = 1 << 3
@@ -16,11 +16,16 @@ var visitedCells = 0
 onready var Map = $GridMap
 
 func _ready():
+	PlayerVariables.currentLevel += 1
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	randomize()
 	make_maze()
+	make_exit()
+	create_timer()
 
 func make_maze():
 	Map.clear()
+	#create maze walls and fill in the "cell" walls
 	for _i in range(mazeW*mazeH):
 		maze.append(0)
 	
@@ -101,3 +106,35 @@ func make_maze():
 					Map.set_cell_item(x*(pathWidth+1) + p, 0, y*(pathWidth+1) + pathWidth, 0)
 				if maze[y* mazeW + x] & CELL_PATH_W:
 					Map.set_cell_item(x*(pathWidth+1) + pathWidth, 0, y*(pathWidth+1) + p, 0)
+	
+	#place event trigger at top of the stack
+	for py in pathWidth:
+				for px in pathWidth:
+					Map.set_cell_item(stack.back()[0] * (pathWidth + 1)+ px, 0,stack.back()[1] * (pathWidth + 1) + py , 3)
+
+func make_exit():
+	#create exit point using last coordinates of the stack
+	var exitPoints = []
+	for py in pathWidth:
+			for px in pathWidth:
+				exitPoints.push_back(Vector3(Map.map_to_world(stack.back()[0] * (pathWidth + 1) + px, 0,stack.back()[1] * (pathWidth + 1) + py)))
+	var exitCoords = Vector3((exitPoints.front()[0]+(pathWidth/2)),0,exitPoints.back()[2]-(pathWidth/2))
+	
+	var shape = BoxShape.new()
+	var shapeExtents = Vector3((pathWidth/2), 10, (pathWidth/2))
+	shape.set_extents(shapeExtents)
+	$ExitArea/CollisionShape.set_shape(shape)
+	$ExitArea.global_translate(exitCoords)
+
+func create_timer(): #create a timer for the player
+	var timer
+	timer = Timer.new()
+	timer.connect("timeout", self, "_on_timer_timeout")
+	timer.set_wait_time(60) #60 seconds
+	add_child(timer)
+	timer.start()
+
+func _on_timer_timeout():
+	get_tree().change_scene("res://GameOverScene.tscn") #change scene on timeout
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	PlayerVariables.currentLevel = 0 #set current 
