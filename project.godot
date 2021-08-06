@@ -10,8 +10,13 @@ config_version=4
 
 [application]
 
-config/name="tileTest"
+config/name="Maze of Minos"
+run/main_scene="res://ui/mainScene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+PlayerVariables="*res://PlayerVariables.gd"
 
 [input]
 

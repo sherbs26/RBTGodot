@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://wallCubeLib2.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://MeshLib.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://LevelGen.gd" type="Script" id=2]
-[ext_resource path="res://Debug Character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ExitArea.gd" type="Script" id=4]
+[ext_resource path="res://ui/PlayerUI.tscn" type="PackedScene" id=5]
 
 [node name="LevelGen" type="Spatial"]
 script = ExtResource( 2 )
@@ -11,6 +13,7 @@ script = ExtResource( 2 )
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 1, 1 )
 cell_center_y = false
+collision_mask = 32
 data = {
 "cells": PoolIntArray(  )
 }
@@ -20,4 +23,20 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 2, 2 )
+collision_layer = 32
+collision_mask = 32
+
+[node name="ExitArea" type="Area" parent="."]
+collision_mask = 32
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ExitArea"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.527786, 0.849377, 0, -0.849377, 0.527786, 1.82993, 31.3264, 6.16819 )
+light_color = Color( 1, 0.972549, 0.839216, 1 )
+shadow_enabled = true
+directional_shadow_mode = 1
+
+[node name="PlayerUI" parent="." instance=ExtResource( 5 )]
